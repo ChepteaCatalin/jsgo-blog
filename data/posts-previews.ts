@@ -7,6 +7,6 @@ export const postsPreviews: PostPreview[] = [
     date: '2026-01-03',
     coverImage: '/covers/pure-function.jpg',
     summary:
-      'This article explains what pure functions are in JavaScript, how they work, and clears up common misconceptions that often confuse developers.',
+      'This article explains what pure functions are in JavaScript, and clears up some misconceptions that often confuse developers.',
   },
 ];

@@ -8,13 +8,15 @@ import PostImage from '@/components/PostImage';
 
 3 January 2026
 
-When you ask developers what a pure function is, you often get answers like, “A function that always returns the same output for the same input”. While this is technically correct, it’s just a part of the truth, an oversimplification that can lead to misunderstandings.
+**Disclaimer:** I am not an expert in functional programming. I only have limited experience with FP concepts in JavaScript.
 
-If you check the definition on Wikipedia, you’ll find a [more comprehensive explanation](https://en.wikipedia.org/wiki/Pure_function). It adds that a pure function must also have no side effects.
+When you ask developers what a pure function is, you often get answers like “A function that always returns the same output for the same input”. While this is technically correct, it’s just a part of the truth, an oversimplification that can lead to misunderstandings.
+
+If you check the definition on Wikipedia, you’ll find a [more comprehensive explanation](https://en.wikipedia.org/wiki/Pure_function). It adds that a pure function must also have **no side effects**.
 
 I had an argument with one interviewer on this concept. He’s the kind of guy (Techinal Architect) who thinks that having worked 10+ years in his position means he knows everything. He insisted that a function returning the same output for the same input is the only requirement for being a pure function. I disagreed, explaining that this definition misses a crucial aspect: side effects.
 
-I told him that I can write a function that returns the sum of two numbers but also modifies a global variable that is used elsewhere in the program:
+I told him that I can write a function that returns the sum of two numbers but also modifies a `localStorage` value that is used elsewhere in the program:
 
 ```javascript
 function sum(a, b) {
@@ -33,4 +35,6 @@ If you are ever asked what a pure function is, say that **a pure function is one
 **Referential transparency** is a property that allows you to replace a function call with its resulting value without changing the program's behavior. Practically, this means that if you go to every place where the function is called and replace the call with its result, and the app still works as before, then the function has referential transparency and is pure. This way, you satisfy the 2 conditions of the pure functions:
 
 1. return values are identical for identical arguments
-2. has no side effects
+2. has NO side effects
+
+What about a function that has a side effect, but this side effect isn't ever observed or relied upon anywhere else in the program? Does that function still have referential transparency? The answer is YES, the function is still referential transparent, because who the f*ck cares about something that is not happening?
