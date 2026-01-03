@@ -5,6 +5,7 @@
     object-fit: cover;
     overflow: hidden;
     margin-bottom: 32px;
+    border-radius: 8px;
 
     @media (min-width: 768px) {
         margin-bottom: 64px;
