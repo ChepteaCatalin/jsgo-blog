@@ -1,0 +1,13 @@
+.container {
+    text-align: center;
+    margin-top: 48px;
+}
+
+.link {
+    color: #000;
+    transition: color .2s cubic-bezier(.4, 0, .2, 1);
+
+    &:hover {
+        color: rgb(0, 112, 243);
+    }
+}
