@@ -1,34 +1,62 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 64px;
-    margin-bottom: 48px;
+    margin: 48px 0;
 
-    & .title {
-        font-size: 6.25rem;
-        line-height: 1.2;
-        padding-right: 32px;
-        margin: 0
-    }
-
-    & .description {
-        font-size: 1.125rem;
-        margin: 0
-    }
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-        margin-bottom: 64px;
+    .flexContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
         & .title {
-            font-size: 2.75rem;
-            padding-right: 0;
+            font-size: 6.25rem;
+            line-height: 1.2;
+            padding-right: 32px;
+            margin: 0
         }
 
         & .description {
-            margin-top: 20px;
-            text-align: center;
+            font-size: 1.125rem;
+            margin: 0
         }
+    }
+
+    .longTitle {
+        margin: 0;
+        font-size: 1.4rem;
+    }
+
+    @media (max-width: 768px) {
+        & .flexContainer {
+            flex-direction: column;
+
+            & .title {
+                font-size: 2.75rem;
+                padding-right: 0;
+            }
+
+            & .description {
+                margin-top: 20px;
+                text-align: center;
+            }
+        }
+
+        & .longTitle {
+            display: none;
+        }
+    }
+}
+
+.postsList {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    row-gap: 5rem;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 4rem;
+        row-gap: 8rem;
+    }
+
+    @media (min-width: 1024px) {
+        column-gap: 8rem;
     }
 }

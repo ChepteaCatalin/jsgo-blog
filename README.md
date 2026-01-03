@@ -2,11 +2,11 @@
 
 My personal shit-talking blog.
 
+This is a statically generated app using Next.js and Markdown.
+
 ## Running locally
 
-This is a static Next.js app.
-
-To run it locally, install dependencies, then run the development server:
+Install dependencies, then run the development server:
 
 ```bash
 pnpm install
