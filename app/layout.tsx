@@ -18,7 +18,7 @@ export default function RootLayout({
       <body>
         <div className={styles.githubHeader}>
           The source code for this blog is{' '}
-          <a href="https://github.com/ChepteaCatalin/personal-blog">
+          <a href="https://github.com/ChepteaCatalin/jsgo-blog">
             available on GitHub
           </a>
         </div>
