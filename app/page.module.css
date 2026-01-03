@@ -29,12 +29,12 @@
             flex-direction: column;
 
             & .title {
-                font-size: 2.75rem;
+                font-size: 3.25rem;
                 padding-right: 0;
             }
 
             & .description {
-                margin-top: 20px;
+                margin-top: 10px;
                 text-align: center;
             }
         }
