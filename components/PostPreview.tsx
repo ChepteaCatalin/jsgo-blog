@@ -24,7 +24,6 @@ export default function PostPreview({
             alt={`Cover Image for ${title}`}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ objectFit: 'cover' }}
           />
         </Link>
       </div>
