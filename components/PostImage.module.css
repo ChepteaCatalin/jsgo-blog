@@ -1,0 +1,12 @@
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    overflow: hidden;
+    margin-bottom: 32px;
+
+    @media (min-width: 768px) {
+        margin-bottom: 64px;
+    }
+}

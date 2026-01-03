@@ -11,7 +11,7 @@ export default function PostsLayout({
       <Link href="/" className={styles.heading}>
         JS:GO
       </Link>
-      <article>{children}</article>
+      <article className={styles.articleContent}>{children}</article>
     </main>
   );
 }
