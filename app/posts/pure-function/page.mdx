@@ -8,18 +8,29 @@ import PostImage from '@/components/PostImage';
 
 3 January 2026
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+When you ask developers what a pure function is, you often get answers like, “A function that always returns the same output for the same input”. While this is technically correct, it’s just a part of the truth, an oversimplification that can lead to misunderstandings.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+If you check the definition on Wikipedia, you’ll find a [more comprehensive explanation](https://en.wikipedia.org/wiki/Pure_function). It adds that a pure function must also have no side effects.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+I had an argument with one interviewer on this concept. He’s the kind of guy (Techinal Architect) who thinks that having worked 10+ years in his position means he knows everything. He insisted that a function returning the same output for the same input is the only requirement for being a pure function. I disagreed, explaining that this definition misses a crucial aspect: side effects.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+I told him that I can write a function that returns the sum of two numbers but also modifies a global variable that is used elsewhere in the program:
 
 ```javascript
-console.log(test);
+function sum(a, b) {
+  localStorage.setItem('very-important-data', Math.random()); // <-- side effect
 
-const a = 1; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+  return a + b;
+}
 ```
 
+According to his definition, this function is pure. But, in reality this function alters the state of the application, making it impure.
+
+He mumbled something that I don't remember. I failed that job interview. Anyways, it was a bad company. F*ck them!
+
+If you are ever asked what a pure function is, say that **a pure function is one that has referential transparency**.
+
+**Referential transparency** is a property that allows you to replace a function call with its resulting value without changing the program's behavior. Practically, this means that if you go to every place where the function is called and replace the call with its result, and the app still works as before, then the function has referential transparency and is pure. This way, you satisfy the 2 conditions of the pure functions:
+
+1. return values are identical for identical arguments
+2. has no side effects
