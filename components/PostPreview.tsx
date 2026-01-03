@@ -8,6 +8,7 @@ export default function PostPreview({
 }: {
   post: PostPreview;
 }) {
+  const postLink = `/posts/${slug}`;
   const formattedDate = new Date(date).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'long',
@@ -17,7 +18,7 @@ export default function PostPreview({
   return (
     <div>
       <div className={styles.imageContainer}>
-        <Link href={`/posts/${slug}`} aria-label={title}>
+        <Link href={postLink} aria-label={title}>
           <Image
             src={coverImage}
             alt={`Cover Image for ${title}`}
@@ -27,13 +28,13 @@ export default function PostPreview({
           />
         </Link>
       </div>
-      <p>
-        <Link href={`/posts/${slug}`}>{title}</Link>
+      <p className={styles.title}>
+        <Link href={postLink}>{title}</Link>
       </p>
-      <div>
+      <div className={styles.date}>
         <time dateTime={date}>{formattedDate}</time>
       </div>
-      <p>{summary}</p>
+      <p className={styles.summary}>{summary}</p>
     </div>
   );
 }
