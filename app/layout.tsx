@@ -7,7 +7,7 @@ import '@/styles/github.css';
 
 export const metadata: Metadata = {
   title: 'JavaScript: Global Offensive',
-  description: `A blog you’ll never read.`,
+  description: `Opinionated takes on JavaScript and web development, challenging common misconceptions and emphasizing core concepts and a personal understanding of how things work.`,
 };
 
 export default function RootLayout({

@@ -4,7 +4,8 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'JavaScript: Global Offensive',
     short_name: 'JS:GO',
-    description: 'A blog you’ll never read.',
+    description:
+      'Opinionated takes on JavaScript and web development, challenging common misconceptions and emphasizing core concepts and a personal understanding of how things work.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
