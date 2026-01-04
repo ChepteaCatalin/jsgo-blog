@@ -38,3 +38,13 @@ If you are ever asked what a pure function is, say that **a pure function is one
 2. has NO side effects
 
 What about a function that has a side effect, but this side effect isn't ever observed or relied upon anywhere else in the program? Does that function still have referential transparency? The answer is YES, the function is still referential transparent, because who the f*ck cares about something that is not happening?
+
+## Are impurities bad?
+
+Ansolutely not!
+
+**A program without side effects is useless.** At some point, you need to change the DOM, write to a database, make network requests, read user input, and so on. All of these operations are side effects.
+
+**A program without side effects is also impossible to create.** At some point, it must interact with the outside world, which inherently involves side effects. Even reading from or writing to memory, consuming CPU cycles and power, or emitting heat as a result of your program’s execution already makes it impure.
+
+So, **function purity is a utopia**. Strive for it, but accept that you will never fully reach it. Use pure functions where they bring practical benefits. If you find yourself overengineering just to maintain purity, then pure functions may not be necessary in your context.
