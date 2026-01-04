@@ -1,4 +1,4 @@
-import type { PostPreview } from '@/types/posts-previews';
+import type { PostPreview } from '@/types/post';
 
 export const postsPreviews: PostPreview[] = [
   {

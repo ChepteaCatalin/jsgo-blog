@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { inter } from './fonts';
 import styles from './layout.module.css';
 import './globals.css';
+import GitHubHeader from '@/components/GitHubHeader';
 
 export const metadata: Metadata = {
   title: 'JavaScript: Global Offensive',
@@ -16,12 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body>
-        <div className={styles.githubHeader}>
-          The source code for this blog is{' '}
-          <a href="https://github.com/ChepteaCatalin/jsgo-blog">
-            available on GitHub
-          </a>
-        </div>
+        <GitHubHeader />
         <div className={styles.container}>{children}</div>
       </body>
     </html>

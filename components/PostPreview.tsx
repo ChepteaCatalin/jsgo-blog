@@ -1,19 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './PostPreview.module.css';
-import type { PostPreview } from '@/types/posts-previews';
+import type { PostPreview } from '@/types/post';
 
 export default function PostPreview({
   post: { date, coverImage, slug, summary, title },
-}: {
+}: Readonly<{
   post: PostPreview;
-}) {
+}>) {
   const postLink = `/posts/${slug}`;
-  const formattedDate = new Date(date).toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
 
   return (
     <div>
@@ -31,7 +26,13 @@ export default function PostPreview({
         <Link href={postLink}>{title}</Link>
       </p>
       <div className={styles.date}>
-        <time dateTime={date}>{formattedDate}</time>
+        <time dateTime={date}>
+          {new Date(date).toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          })}
+        </time>
       </div>
       <p className={styles.summary}>{summary}</p>
     </div>
