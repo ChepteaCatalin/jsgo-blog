@@ -2,7 +2,7 @@ import type { PostPreview } from '@/types/post';
 
 export const postsPreviews: PostPreview[] = [
   {
-    title: 'What is a Function?',
+    title: 'What is a function?',
     slug: 'what-is-a-function',
     date: '2026-01-04',
     coverImage: '/covers/what-is-a-function.png',
@@ -10,7 +10,7 @@ export const postsPreviews: PostPreview[] = [
       'This article introduces the concept of functions and clears up some common misconceptions.',
   },
   {
-    title: 'Pure Function',
+    title: 'Pure function',
     slug: 'pure-function',
     date: '2026-01-03',
     coverImage: '/covers/pure-function.jpg',
