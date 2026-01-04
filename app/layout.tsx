@@ -3,6 +3,7 @@ import { inter } from './fonts';
 import styles from './layout.module.css';
 import './globals.css';
 import GitHubHeader from '@/components/GitHubHeader';
+import 'highlight.js/styles/github.css';
 
 export const metadata: Metadata = {
   title: 'JavaScript: Global Offensive',
