@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { inter } from './fonts';
+import { lora } from './fonts';
 import styles from './layout.module.css';
 import GitHubHeader from '@/components/GitHubHeader';
 import './globals.css';
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={lora.className}>
       <body>
         <GitHubHeader />
         <div className={styles.container}>{children}</div>
