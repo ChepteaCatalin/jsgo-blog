@@ -1,6 +1,6 @@
 # JavaScript: Global Offensive
 
-My personal shit-talking blog.
+My personal blog.
 
 This is a statically generated app using Next.js and Markdown.
 
