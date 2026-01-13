@@ -10,7 +10,14 @@ export default function PostImage({
 }>) {
   return (
     <div className={styles.imageWrapper} id={`img-wrapper-${title}`}>
-      <Image src={src} alt={`Cover Image for ${title}`} fill sizes="100vw" />
+      <Image
+        src={src}
+        alt={`Cover Image for ${title}`}
+        fill
+        sizes="100vw"
+        loading="eager"
+        fetchPriority="high"
+      />
     </div>
   );
 }
