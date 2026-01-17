@@ -7,7 +7,7 @@ export const postsPreviews: PostPreview[] = [
     date: '2026-01-04',
     coverImage: '/covers/what-is-a-function.png',
     summary:
-      'This article introduces the concept of functions and clears up some common misconceptions.',
+      'Introducing the concept of function and clarifying some common misconceptions.',
   },
   {
     title: 'Pure function',
@@ -15,6 +15,6 @@ export const postsPreviews: PostPreview[] = [
     date: '2026-01-03',
     coverImage: '/covers/pure-function.jpg',
     summary:
-      'This article explains what pure functions are, and clears up some misconceptions that often confuse developers.',
+      'Explaining what pure functions are and clarifying some misconceptions that often confuse developers.',
   },
 ];
