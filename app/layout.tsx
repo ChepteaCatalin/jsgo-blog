@@ -10,11 +10,7 @@ export const metadata: Metadata = {
   description: `Opinionated takes on JavaScript and web development, challenging common misconceptions and emphasizing core concepts and a personal understanding of how things work.`,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={lora.className}>
       <body>

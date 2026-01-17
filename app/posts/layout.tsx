@@ -1,11 +1,7 @@
 import Link from 'next/link';
 import styles from './layout.module.css';
 
-export default function PostsLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function PostsLayout({ children }: LayoutProps<'/posts'>) {
   return (
     <main>
       <Link href="/" className={styles.heading}>
