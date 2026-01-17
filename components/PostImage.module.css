@@ -1,12 +1,15 @@
 .imageWrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 32px;
-    border-radius: 8px;
 
     @media (min-width: 768px) {
         margin-bottom: 64px;
     }
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
 }

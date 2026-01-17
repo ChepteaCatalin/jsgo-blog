@@ -14,8 +14,8 @@ export default function PostImage({
       <Image
         src={src}
         alt={`Cover Image for ${title}`}
-        fill
-        sizes="(min-width: 1536px) 1476px, (min-width: 1280px) 1220px, (min-width: 1024px) 964px, (min-width: 768px) 708px, (min-width: 640px) 580px, calc(100vw - 60px)"
+        sizes="100vw"
+        className={styles.image}
         loading="eager"
         fetchPriority="high"
         placeholder="blur"
