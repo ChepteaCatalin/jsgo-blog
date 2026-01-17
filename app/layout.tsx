@@ -3,7 +3,7 @@ import { lora } from './fonts';
 import styles from './layout.module.css';
 import GitHubHeader from '@/components/GitHubHeader';
 import './globals.css';
-import '@/styles/github.css';
+import './github.css';
 
 export const metadata: Metadata = {
   title: 'JavaScript: Global Offensive',
