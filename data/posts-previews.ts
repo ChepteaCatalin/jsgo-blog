@@ -2,6 +2,14 @@ import type { PostPreview } from '@/types/post';
 
 export const postsPreviews: PostPreview[] = [
   {
+    title: `Why I don't like Angular`,
+    slug: 'why-i-dont-like-angular',
+    date: '2026-01-28',
+    coverImage: '/covers/why-i-dont-like-angular.jpg',
+    summary:
+      'Explaining why Angular is a bad framework, in my opinion, based on my personal experience with it.',
+  },
+  {
     title: 'What is a function?',
     slug: 'what-is-a-function',
     date: '2026-01-04',

@@ -1,0 +1,87 @@
+import PostImage from '@/components/PostImage';
+import Cover from '@/public/covers/why-i-dont-like-angular.jpg';
+
+export const metadata = {
+  title: `Why I don't like Angular`,
+  description:
+    'Explaining why Angular is a bad framework, in my opinion, based on my personal experience with it.',
+};
+
+
+# Why I don't like Angular
+
+<PostImage 
+    src={Cover}
+    title="Why I don't like Angular" />
+
+28 January 2026
+
+I’ve been using Angular for about two years on a commercial project, which was also my first professional programming experience. During that time, I learned quite a bit about the framework and, more importantly, **I realized that I really don’t like working with it**.
+
+**Disclaimer:** Everything I say here applies to Angular versions 9 through 16. I know the framework has changed somewhat over the years. Also, I’m not the best developer out there, so don’t take my words too seriously.
+
+Here is a list of reasons why I don’t like Angular:
+
+
+## It doesn’t serve its purpose
+
+Angular is meant to be a framework for building large-scale enterprise applications. However, in practice, it fails to deliver on this promise. **The framework is slow, has large bundle sizes, and lacks proper server-side rendering support.** It feels like Angular is trying to be everything for everyone, but ends up being mediocre at best for large-scale applications.
+
+You can’t really build anything serious with it. Even if you do, the amount of effort is tremendous, far more than if you used something else for the same purpose.
+
+I think the only real reason to use Angular is when you only have backend developers (or so-called full-stack devs) who need to handle the frontend too. Angular gives them something closer to what they’re used to and lets them build simple frontends.
+
+
+## Code Style
+
+When I was using Angular, I felt like an old Java or .NET developer forced to do front-end development.
+
+I disliked the amount of boilerplate code required just to get some simple things done. I disliked the fact that the Angular team and community tend to embrace this kind of boilerplate, arguing that it’s not boilerplate but ✨Architecture✨. Somehow, the excessive amount of repeated code throughout the project makes them feel like they’re following a "best practices" structure. **All the boilerplate seems to give Angular fans a sense of safety, making them feel their code is high-quality and the extra effort is justified.**
+
+Angular’s syntax is also far from ideal. I remember when I was just learning it, I had to consult the documentation for common tasks far more often than I do with other technologies. **It's syntax feels unnatural, clunky and counterintuitive**. When working with Angular, you feel like you’re not doing web development, but using some kind of native framework with its own rules and syntax. It feels more like backend development, since you spend more time wiring up syntactical nonsense (a.k.a ✨Architecture✨) than actually building user interfaces.
+
+
+## Reactivity Model and Change Detection
+
+Change detection was designed as the mechanism to make reactivity easy. The Angular team wanted reactivity to be automatic so developers wouldn’t have to worry about it. However, in practice, we end up using many escape hatches to make it work properly. We also lack fine-grained control over reactivity, which is essential for building high-performance applications. **So, in the end, change detection is an out-of-control kind of magic that doesn’t work as you expect it to in most cases.** I know they have signals and zoneless change detection now, but this doesn’t change things as much as the Angular team claims.
+
+
+## Unnecessary Complexity
+
+**Angular is notorious for making simple things complex and complex things nearly impossible.** The framework has a steep learning curve, and it takes a long time to become proficient with it.
+
+**It’s overly restrictive**, often forcing developers to rely on escape hatches just to get things done. This leads to frustration and wasted time.
+
+**Dependency Injection is just dumb**. Why would anyone need dependency injection on the frontend? It adds unnecessary complexity to the codebase and makes the code harder to reason about.
+
+**The Angular module system is also unnecessary.** Why do we need a separate module system when we already have ES modules? It only adds more boilerplate and complexity to the codebase.
+
+**RxJS** is another source of unnecessary complexity. While it’s a powerful library, it’s hard to learn and use effectively. It often leads to a form of "callback hell", not in the traditional pyramidal sense, but because of inversion of control: you pass your functions to RxJS and then hope they are called when and as many times as needed. RxJS also makes it difficult to reason about timing, as it’s often unclear when and what code is actually executed. It can make the code unpredictable, particularly if the developers lack experience or skill.
+
+
+## Weak Ecosystem and Community
+
+Sometimes, when using an npm package in Angular, you have to write your own Angular adapter or find one online. Often, you can’t just install a package and use it unless it was specifically designed for Angular.
+
+Often, you can’t find cool libraries or tools made for Angular because the community is small and not very active. Most developers these days prefer React, Vue, or Svelte, which leaves Angular as a niche framework with limited resources and support. As a result, its ecosystem is very restricted and primarily maintained by the Angular team.
+
+One particular issue with the Angular community is that it’s often not very open-minded. Many people take everything the Angular team says at face value, believing that Angular is the best framework and that others are inferior. They frequently dismiss alternative opinions and refuse to consider different approaches, living in a world where Angular is the only "true" way to build web applications.
+
+
+## Big breaking changes every six months
+
+With every major release, you have to guess what the Angular team has broken this time. They introduce too many breaking changes, often without proper deprecation warnings or migration guides. This makes it difficult to keep up with the latest version and forces developers to spend a lot of time updating their codebases.
+
+The fact that Angular has had so many breaking changes recently doesn’t indicate that the framework is evolving; rather, it shows that the Angular team made poor design decisions in the past and is now trying to fix them.
+
+
+## It's not future-proof
+
+Hardly anyone starts serious projects in Angular anymore. Most new projects are built with React, Vue, or Svelte, and Angular is becoming increasingly irrelevant in the web development world.
+
+While there are still some jobs requiring Angular knowledge, most of them involve only maintaining legacy applications.
+
+
+## Conclusion
+
+Angular is shit. Avoid it.
