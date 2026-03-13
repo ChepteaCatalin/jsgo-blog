@@ -19,8 +19,8 @@
     "rehype-highlight": "^7.0.2"
   },
   "devDependencies": {
-    "@types/node": "^25.1.0",
-    "@types/react": "^19.2.10",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
