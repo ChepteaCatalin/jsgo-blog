@@ -11,20 +11,20 @@
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "^16.2.5",
+    "@next/mdx": "^16.2.6",
     "@types/mdx": "^2.0.13",
-    "next": "16.2.5",
+    "next": "16.2.6",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "rehype-highlight": "^7.0.2"
   },
   "devDependencies": {
-    "@types/node": "^25.6.0",
+    "@types/node": "^25.6.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.2.5",
+    "eslint-config-next": "16.2.6",
     "typescript": "^6.0.3"
   }
 }
