@@ -4,6 +4,7 @@ import styles from './layout.module.css';
 import GitHubHeader from '@/components/GitHubHeader';
 import './globals.css';
 import './github.css';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   title: 'JavaScript: Global Offensive',
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body>
         <GitHubHeader />
         <div className={styles.container}>{children}</div>
+        <SpeedInsights />
       </body>
     </html>
   );
