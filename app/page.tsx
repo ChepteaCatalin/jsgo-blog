@@ -8,7 +8,7 @@ export default function Page() {
       <section className={styles.header}>
         <div className={styles.flexContainer}>
           <h1 className={styles.title}>JS:GO</h1>
-          <p className={styles.description}>A blog you’ll never read.</p>
+          <p className={styles.description}>A blog you’ll never read</p>
         </div>
         <p className={styles.longTitle}>JavaScript: Global Offensive</p>
       </section>
