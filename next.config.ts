@@ -3,6 +3,8 @@ import createMDX from '@next/mdx';
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  cacheComponents: true,
+  partialPrefetching: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 };
 
