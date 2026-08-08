@@ -1,6 +1,6 @@
 export default function GitHubHeader() {
   return (
-    <div className="bg-primary-foreground w-screen border-b px-5 py-1.25 text-center">
+    <div className="bg-primary-foreground border-b px-5 py-1.25 text-center text-sm">
       The source code for this blog is{" "}
       <a
         href="https://github.com/ChepteaCatalin/jsgo-blog"
