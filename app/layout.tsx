@@ -3,6 +3,7 @@ import GitHubHeader from "@/components/GitHubHeader";
 import "./globals.css";
 import "./github.css";
 import { Lora, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -21,10 +22,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${lora.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      className={`${lora.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
       <body className="typeset typeset-docs max-w-[42em]">
-        <GitHubHeader />
-        <div>{children}</div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <GitHubHeader />
+          <div>{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );

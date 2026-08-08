@@ -6,7 +6,7 @@ export default function GitHubHeader() {
         href="https://github.com/ChepteaCatalin/jsgo-blog"
         target="_blank"
         rel="noopener noreferrer"
-        className="transition-[color] duration-200 ease-in-out hover:text-[#0070f3]"
+        className="transition-[color] duration-200 ease-in-out hover:text-[#0550ae] dark:hover:text-[#58a6ff]"
       >
         available on GitHub
       </a>
