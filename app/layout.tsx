@@ -22,9 +22,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={`${lora.variable} ${geistMono.variable}`}>
-      <body>
+      <body className="typeset typeset-docs max-w-[42em]">
         <GitHubHeader />
-        <div className="typeset typeset-docs max-w-[42em]">{children}</div>
+        <div>{children}</div>
       </body>
     </html>
   );
