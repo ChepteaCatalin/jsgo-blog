@@ -1,5 +1,5 @@
-import PostPreview from '@/components/PostPreview';
-import { postsPreviews } from '@/data/posts-previews';
+import PostPreview from "@/components/PostPreview";
+import { postsPreviews } from "@/data/posts-previews";
 
 export default function Page() {
   return (
@@ -12,7 +12,7 @@ export default function Page() {
         <p>JavaScript: Global Offensive</p>
       </section>
       <section>
-        {postsPreviews.map(post => (
+        {postsPreviews.map((post) => (
           <PostPreview key={post.slug} post={post} />
         ))}
       </section>
