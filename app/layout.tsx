@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import GitHubHeader from "@/components/GitHubHeader";
+import Header from "@/components/Header";
 import "./globals.css";
 import "./github.css";
 import { Lora, Geist_Mono } from "next/font/google";
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
-          <GitHubHeader />
+          <Header />
           <div className="mx-auto px-7.5 pb-12 sm:max-w-160 md:max-w-3xl lg:max-w-5xl">
             {children}
           </div>
