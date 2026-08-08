@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${lora.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="typeset typeset-docs max-w-[42em]">
+      <body className="typeset typeset-docs">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -35,7 +35,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           disableTransitionOnChange
         >
           <GitHubHeader />
-          <div>{children}</div>
+          <div className="mx-auto px-7.5 pb-12 sm:max-w-160 md:max-w-3xl lg:max-w-5xl">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
