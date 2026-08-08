@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './PostPreview.module.css';
 import type { PostPreview } from '@/types/post';
 
 export default function PostPreview({
@@ -12,7 +11,7 @@ export default function PostPreview({
 
   return (
     <div>
-      <div className={styles.imageContainer}>
+      <div>
         <Link href={postLink} aria-label={title}>
           <Image
             src={coverImage}
@@ -22,10 +21,10 @@ export default function PostPreview({
           />
         </Link>
       </div>
-      <p className={styles.title}>
+      <p>
         <Link href={postLink}>{title}</Link>
       </p>
-      <div className={styles.date}>
+      <div>
         <time dateTime={date}>
           {new Date(date).toLocaleDateString('en-GB', {
             day: 'numeric',
@@ -34,7 +33,7 @@ export default function PostPreview({
           })}
         </time>
       </div>
-      <p className={styles.summary}>{summary}</p>
+      <p>{summary}</p>
     </div>
   );
 }

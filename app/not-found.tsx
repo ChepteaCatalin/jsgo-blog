@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import styles from './not-found.module.css';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,12 +8,10 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className={styles.container}>
+    <div>
       <h1>Not Found!</h1>
       <p>The page you are looking for does not exist.</p>
-      <Link href="/" className={styles.link}>
-        Go to the Homepage
-      </Link>
+      <Link href="/">Go to the Homepage</Link>
     </div>
   );
 }
