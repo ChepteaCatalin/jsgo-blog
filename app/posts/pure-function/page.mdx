@@ -1,18 +1,15 @@
-import PostImage from '@/components/PostImage';
-import Cover from '@/public/covers/pure-function.jpg';
+import PostImage from "@/components/PostImage";
+import Cover from "@/public/covers/pure-function.jpg";
 
 export const metadata = {
-  title: 'Pure function',
+  title: "Pure function",
   description:
-    'Explaining what pure functions are and clarifying some misconceptions that often confuse developers.',
+    "Explaining what pure functions are and clarifying some misconceptions that often confuse developers.",
 };
-
 
 # Pure function
 
-<PostImage 
-    src={Cover}
-    title="Pure function" />
+<PostImage src={Cover} title="Pure function" />
 
 3 January 2026
 
@@ -28,7 +25,7 @@ I told him that I can write a function that returns the sum of two numbers but a
 
 ```javascript
 function sum(a, b) {
-  localStorage.setItem('very-important-data', Math.random()); // <-- side effect
+  localStorage.setItem("very-important-data", Math.random()); // <-- side effect
 
   return a + b;
 }
@@ -36,7 +33,7 @@ function sum(a, b) {
 
 According to his definition, this function is pure. But, in reality this function alters the state of the application, making it impure.
 
-He mumbled something that I don't remember. I failed that job interview. Anyways, it was a bad company. F*ck them!
+He mumbled something that I don't remember. I failed that job interview. Anyways, it was a bad company. F\*ck them!
 
 If you are ever asked what a pure function is, say that **a pure function is one that has referential transparency**.
 
@@ -45,7 +42,7 @@ If you are ever asked what a pure function is, say that **a pure function is one
 1. return values are identical for identical arguments
 2. has NO side effects
 
-What about a function that has a side effect, but this side effect isn't ever observed or relied upon anywhere else in the program? Does that function still have referential transparency? The answer is YES, the function is still referential transparent, because who the f*ck cares about something that is not happening?
+What about a function that has a side effect, but this side effect isn't ever observed or relied upon anywhere else in the program? Does that function still have referential transparency? The answer is YES, the function is still referential transparent, because who the f\*ck cares about something that is not happening?
 
 ## Are impurities bad?
 
