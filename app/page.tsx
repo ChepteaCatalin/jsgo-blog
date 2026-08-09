@@ -11,7 +11,7 @@ export default function Page() {
         </div>
         <p>JavaScript: Global Offensive</p>
       </section>
-      <section className="grid grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
+      <section className="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-12 md:gap-y-16 lg:gap-x-16 lg:gap-y-20">
         {postsPreviews.map((post, index) => (
           <PostPreview key={post.slug} post={post} priority={index === 0} />
         ))}
