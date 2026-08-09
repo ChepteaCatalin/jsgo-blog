@@ -13,22 +13,24 @@ export default function PostPreview({
 
   return (
     <div>
-      <div className="relative mb-5 aspect-video w-full overflow-hidden rounded-md">
-        <Link href={postLink} aria-label={title}>
-          <Image
-            src={coverImage}
-            alt={`Cover Image for ${title}`}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1600px) 50vw, 704px"
-            priority={priority}
-            placeholder="blur"
-            className="mt-0 object-cover"
-          />
-        </Link>
-      </div>
       <Link
         href={postLink}
-        className="inline-block text-3xl no-underline hover:underline"
+        aria-label={title}
+        className="relative mb-5 block aspect-video w-full overflow-hidden rounded-md"
+      >
+        <Image
+          src={coverImage}
+          alt={`Cover Image for ${title}`}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1600px) 50vw, 704px"
+          priority={priority}
+          placeholder="blur"
+          className="mt-0 object-cover"
+        />
+      </Link>
+      <Link
+        href={postLink}
+        className="inline-block text-3xl font-semibold no-underline hover:underline"
       >
         {title}
       </Link>

@@ -1,21 +1,22 @@
+import Logo from "@/components/Logo";
 import Link from "next/link";
 
 export default function PostsLayout({ children }: LayoutProps<"/posts">) {
   return (
     <main className="mx-auto max-w-3xl">
-      <Link
-        href="/"
-        aria-label="JS:GO home"
-        className="group mt-8 inline-block text-4xl font-bold no-underline"
-      >
-        <span className="text-amber-700 transition-colors group-hover:text-amber-600 dark:text-amber-300 dark:group-hover:text-amber-200">
-          JS
-        </span>
-        <span className="text-muted-foreground">:</span>
-        <span className="text-emerald-700 transition-colors group-hover:text-emerald-600 dark:text-emerald-400 dark:group-hover:text-emerald-300">
-          GO
-        </span>
-      </Link>
+      <header className="mt-8">
+        <Link
+          href="/"
+          aria-label="JS:GO home"
+          className="group inline-block text-5xl font-bold tracking-tight no-underline"
+        >
+          <Logo />
+        </Link>
+        <div
+          aria-hidden="true"
+          className="mt-3 h-px w-full bg-linear-to-r from-amber-700 to-emerald-700 opacity-70 dark:from-amber-300 dark:to-emerald-400"
+        />
+      </header>
       <article>{children}</article>
     </main>
   );
