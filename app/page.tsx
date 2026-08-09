@@ -11,9 +11,9 @@ export default function Page() {
         </div>
         <p>JavaScript: Global Offensive</p>
       </section>
-      <section>
-        {postsPreviews.map((post) => (
-          <PostPreview key={post.slug} post={post} />
+      <section className="grid grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
+        {postsPreviews.map((post, index) => (
+          <PostPreview key={post.slug} post={post} priority={index === 0} />
         ))}
       </section>
     </main>
