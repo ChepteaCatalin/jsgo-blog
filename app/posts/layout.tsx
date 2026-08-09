@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function PostsLayout({ children }: LayoutProps<"/posts">) {
   return (
-    <main>
+    <main className="mx-auto max-w-3xl">
       <Link
         href="/"
         aria-label="JS:GO home"

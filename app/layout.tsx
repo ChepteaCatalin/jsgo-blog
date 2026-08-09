@@ -35,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           disableTransitionOnChange
         >
           <Header />
-          <div className="mx-auto px-7.5 pb-12 sm:max-w-160 md:max-w-3xl lg:max-w-5xl">
+          <div className="mx-auto max-w-3xl px-7.5 pb-12 lg:max-w-5xl">
             {children}
           </div>
         </ThemeProvider>
