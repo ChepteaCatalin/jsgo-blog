@@ -30,7 +30,7 @@ export default function PostPreview({
       </Link>
       <Link
         href={postLink}
-        className="inline-block text-3xl font-semibold no-underline hover:underline"
+        className="inline-block text-3xl no-underline hover:underline"
       >
         {title}
       </Link>
