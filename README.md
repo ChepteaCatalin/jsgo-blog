@@ -22,3 +22,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 3. Create a folder in `app/posts` with a name that matches the `slug` defined in the object added to `data/posts-previews.ts`.
 4. Create a `page.mdx` file inside this folder and add the article's markdown content.
 5. Define metadata and export the `metadata` identifier from `page.mdx`.
+
+## Privacy Policy
+
+If you decide to self-host this site, don't forget to update the Privacy Policy. At a minimum, make sure to update the contact information.

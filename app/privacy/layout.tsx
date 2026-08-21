@@ -1,6 +1,6 @@
 import LogoLink from "@/components/LogoLink";
 
-export default function PostsLayout({ children }: LayoutProps<"/posts">) {
+export default function PrivacyLayout({ children }: LayoutProps<"/privacy">) {
   return (
     <main data-width="narrow" className="mx-auto max-w-3xl">
       <header className="mt-8">

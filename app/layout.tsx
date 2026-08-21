@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "./globals.css";
 import "./github.css";
 import { Lora, Geist_Mono } from "next/font/google";
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="mx-auto box-content max-w-3xl px-7.5 pb-12 md:max-w-5xl lg:max-w-384">
             {children}
           </div>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
