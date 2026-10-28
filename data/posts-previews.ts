@@ -2,8 +2,16 @@ import type { PostPreview } from "@/types/post";
 import whyIDontLikeAngularCover from "@/public/covers/why-i-dont-like-angular.jpg";
 import whatIsAFunctionCover from "@/public/covers/what-is-a-function.png";
 import pureFunctionCover from "@/public/covers/pure-function.jpg";
+import howAmILearningReactCover from "@/public/covers/how-am-i-learning-react.jpeg";
 
 export const postsPreviews: PostPreview[] = [
+  {
+    title: `How am I learning React?`,
+    slug: "how-am-i-learning-react",
+    date: "2026-10-28",
+    coverImage: howAmILearningReactCover,
+    summary: "Sharing my approach to learning React in depth.",
+  },
   {
     title: `Why I don't like Angular`,
     slug: "why-i-dont-like-angular",
