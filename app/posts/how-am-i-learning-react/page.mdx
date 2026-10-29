@@ -14,7 +14,7 @@ export const metadata = {
 
 I’m already comfortable using React, but I want to understand what happens under the hood.
 
-I’ve read plenty of documentation and articles, watched videos, and tried other learning resources, but I feel like they only scratch the surface. Eventually, I realized that the best way for me to understand React in depth is to dig into its source code. That’s why I set it up locally: I want to explore how React actually works under the hood.
+I’ve read plenty of documentation and articles, watched videos, and tried other learning resources, but I feel like they only scratch the surface. Eventually, I realized that the best way for me to understand React in depth is to dig into its source code. That’s why I set it up locally.
 
 ## Setting up the React source code locally
 
@@ -63,13 +63,13 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 
 I found [this issue](https://github.com/react/react/issues/31334), which is still open, by the way. So, I had to find a workaround for this TypeScript declaration problem. I applied the changes from [this PR](https://github.com/react/react/pull/35856) to my local React version, and I got the same error again.
 
-After a session with Claude, it told me to run `yarn --cwd compiler install --frozen-lockfile`, which is the same step CI uses in `.github/workflows/runtime_build_and_test.yml`.
+After a session with Claude, it told me to run `yarn --cwd compiler install --frozen-lockfile`, which is the same step CI uses in `.github/workflows/runtime_build_and_test.yml`. **Basically, even though React doesn’t provide meaningful documentation on how to build it locally, you can just read its GitHub workflows and follow the same steps**.
 
 It worked, but it took me **1587.84s (~26.5 minutes)**. Surprisingly long for a local build.
 
 The `build` folder contains 1352 items and ~116.4MB.
 
-Next, I created a React app using Vite. However, I needed a way to link my app to the local React source code so I could experiment with it. For now, I decided to use Vite aliases to point my app to the local React source code:
+Next, I created a React app using Vite. However, I needed a way to link my app to the local React source code so I could experiment with it. For now, I decided to use Vite aliases:
 
 ```ts
 // vite.config.ts
