@@ -3,14 +3,31 @@ import whyIDontLikeAngularCover from "@/public/covers/why-i-dont-like-angular.jp
 import whatIsAFunctionCover from "@/public/covers/what-is-a-function.png";
 import pureFunctionCover from "@/public/covers/pure-function.jpg";
 import howAmILearningReactCover from "@/public/covers/how-am-i-learning-react.jpeg";
+import smallElephantCover from "@/public/covers/small-elephant.jpg";
+import nerdCover from "@/public/covers/nerd.jpg";
 
 export const postsPreviews: PostPreview[] = [
+  {
+    title: `React: Getting Started (Part 1)`,
+    slug: "react-getting-started-part-1",
+    date: "2026-11-01",
+    coverImage: smallElephantCover,
+    summary: "Getting started with React and understanding its core concepts.",
+  },
   {
     title: `How am I learning React?`,
     slug: "how-am-i-learning-react",
     date: "2026-10-28",
     coverImage: howAmILearningReactCover,
     summary: "Sharing my approach to learning React in depth.",
+  },
+  {
+    title: "Awesome React Resources",
+    slug: "awesome-react-resources",
+    date: "2026-10-25",
+    coverImage: nerdCover,
+    summary:
+      "A curated collection of high-quality resources for learning React. No hype, no low-effort tutorials, no beginner-level material covering obvious concepts: just genuinely valuable resources.",
   },
   {
     title: `Why I don't like Angular`,
