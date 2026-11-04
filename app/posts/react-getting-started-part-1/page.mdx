@@ -90,3 +90,5 @@ React is a monorepo. Its repository contains multiple separate packages so that 
 React "core" includes all the [top-level APIs](https://reactjs.org/docs/react-api.html)
 
 **React core only includes the APIs necessary to define components. It does not include the reconciliation algorithm or any platform-specific code.** It is used both by React DOM and React Native components. This is an intentional architectural decision that allows the same React core to be used across different environments. For example, React DOM targets the web, while React Native targets mobile platforms. Each renderer provides the platform-specific rendering logic while sharing the same React core and reconciliation infrastructure.
+
+React Core is located in the `packages/react` directory within the repository. It is published to npm as the `react` package, which exports the `React` identifier.
