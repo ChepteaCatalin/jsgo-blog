@@ -32,3 +32,49 @@ React hides breaking changes and unfinished features behind feature flags. This 
 React also has an integration job that checks bundle sizes on every commit, helping the team ensure that features are properly gated.
 
 Feature flags are defined in `packages/shared/ReactFeatureFlags.js`. However, some builds require different feature flags. For example, React Native may need different flags than React DOM. These build-specific configurations can be found in `packages/shared/forks`.
+
+## Tests
+
+The React team prefers colocating tests in a `__tests__` directory close to the features they test, rather than keeping them all in a centralized directory. I prefer this approach as well.
+
+## Codebase Overview
+
+React is a monorepo. Its documentation, however, is hosted in a separate repository.
+
+The main top-level directories in the React monorepo include:
+
+- `packages` contains metadata and source code (`src`) for all React packages.
+- `fixtures` contains a collection of small React applications that contributors can use to test and experiment with React features.
+- `build` contains the build output of React. This directory is generated the first time you build the project.
+
+## Warnings and Invariants
+
+In React, `console.error` is used to log warnings during development. Yes, despite its name, `console.error` is used for warnings. These are the "errors" you typically see in Console in development mode. In production, these messages are stripped out.
+
+```js
+if (__DEV__) {
+  console.error("Something is wrong.");
+}
+```
+
+Invariants are conditions that must always hold true during program execution. They are essentially assertions. If an invariant is violated, it indicates a serious problem in the code, so React throws an error to signal the issue. Unlike development warnings, invariant violations trigger errors in both development and production modes.
+
+## Development and Production
+
+The `__DEV__` pseudo-variable allows React to differentiate between development and production builds. It is called a pseudo-variable because its value is replaced at build time with a boolean (`true` or `false`). This means you can use it anywhere in the React repository, even though it isn't explicitly defined in the source code.
+
+```js
+if (__DEV__) {
+  // This code will only run in development.
+}
+```
+
+During the build process, `if (__DEV__)` is replaced with `if (true)` in development builds and `if (false)` in production builds.
+
+The Google Closure Compiler removes all `if (false)` branches from the minified production build, effectively eliminating development-only code and resulting in a smaller, more efficient production bundle.
+
+The Google Closure Compiler is a Java-based tool distributed through the npm package `google-closure-compiler`. React uses it to minify and optimize production bundles. It performs dead code elimination, minification, and various other optimizations.
+
+Despite the name, it has nothing to do with the ClosureScript programming language.
+
+This also answers my previous question: "Why do I need a Java runtime installed to build React?"
