@@ -49,13 +49,15 @@ The main top-level directories in the React monorepo include:
 
 ## Warnings and Invariants
 
-In React, `console.error` is used to log warnings during development. Yes, despite its name, `console.error` is used for warnings. These are the "errors" you typically see in Console in development mode. In production, these messages are stripped out.
+In React, `console.error` is used to log warnings during development. Yes, despite its name, `console.error` is used for warnings. These are the "errors" you typically see in Console in development mode.
 
 ```js
 if (__DEV__) {
   console.error("Something is wrong.");
 }
 ```
+
+In production builds, these messages are stripped out because the Google Closure Compiler eliminates dead code, including `if (__DEV__)` blocks when `__DEV__` is `false`. This is exactly how React removes development-only warnings from production builds.
 
 Invariants are conditions that must always hold true during program execution. They are essentially assertions. If an invariant is violated, it indicates a serious problem in the code, so React throws an error to signal the issue. Unlike development warnings, invariant violations trigger errors in both development and production modes.
 
@@ -78,3 +80,9 @@ The Google Closure Compiler is a Java-based tool distributed through the npm pac
 Despite the name, it has nothing to do with the ClosureScript programming language.
 
 This also answers my previous question: "Why do I need a Java runtime installed to build React?"
+
+Everything inside an `if (__DEV__)` block is eliminated from the production build by the Google Closure Compiler.
+
+## Flow
+
+Flow, developed by Facebook (now Meta), is a static type checker for JavaScript and is used throughout the React codebase. At first glance, it might look like a less capable version of TypeScript. Files annotated with `@flow` contain Flow type annotations.
