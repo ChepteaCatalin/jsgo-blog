@@ -15,13 +15,7 @@ export const metadata = {
 
 While trying to understand what's happening in the React codebase, I came across its `CONTRIBUTING.md` file, which contains a link to a resource I think is worth checking out:
 
-<a
-  href="https://legacy.reactjs.org/docs/how-to-contribute.html"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  React Contribution Guide
-</a>
+[React Contribution Guide](https://legacy.reactjs.org/docs/how-to-contribute.html)
 
 I know this is old documentation, and the contribution guide itself looks outdated, but I'm pretty sure there's still something valuable to learn from it.
 
@@ -86,3 +80,13 @@ Everything inside an `if (__DEV__)` block is eliminated from the production buil
 ## Flow
 
 Flow, developed by Facebook (now Meta), is a static type checker for JavaScript and is used throughout the React codebase. At first glance, it might look like a less capable version of TypeScript. Files annotated with `@flow` contain Flow type annotations.
+
+## Multiple packages
+
+React is a monorepo. Its repository contains multiple separate packages so that their changes can be coordinated together, and issues live in one place.
+
+## React Core
+
+React "core" includes all the [top-level APIs](https://reactjs.org/docs/react-api.html)
+
+**React core only includes the APIs necessary to define components. It does not include the reconciliation algorithm or any platform-specific code.** It is used both by React DOM and React Native components. This is an intentional architectural decision that allows the same React core to be used across different environments. For example, React DOM targets the web, while React Native targets mobile platforms. Each renderer provides the platform-specific rendering logic while sharing the same React core and reconciliation infrastructure.
