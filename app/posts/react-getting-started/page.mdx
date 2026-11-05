@@ -115,3 +115,22 @@ In React 15 and earlier, React used the _Stack Reconciler_. Starting with React 
 ## Event System
 
 React implements a layer over native events to smooth out cross-browser differences. Its source code is located in `packages/react-dom/src/events`.
+
+---
+
+## Reconciliation algorithm
+
+### Motivation
+
+When a component updates (e.g., when a prop or state changes), its `render()` function is called. This function generates a tree of React elements. On the next render, React generates a new tree. Although the new tree may differ from the previous one, the DOM representation remains unchanged initially. React therefore needs a way to apply the necessary changes to the DOM based on the differences between the two trees.
+
+So, we need to **identify the differences between the previous and the new trees of React elements and apply the minimum set of changes to the DOM to transform the former into the latter**. This process is known as **reconciliation**.
+
+There is a mathematically proven, state-of-the-art algorithm that guarantees finding the **minimum set of changes required to transform one tree into another**, called the **Tree Edit Distance (TED)** algorithm. The problem with this algorithm is that its time complexity is O(n³), where _n_ is the number of nodes in the tree. This makes it impractical for large trees, such as those encountered in real-world React applications. For example, if you have a tree with 1,000 nodes, the algorithm may require on the order of one billion operations, which is clearly not feasible in practice for web applications.
+
+The React team implemented a heuristic algorithm that is not mathematically optimal: it does not guarantee finding the **minimum set of changes required to transform one tree into another**. However, it works efficiently in practice for typical React applications. Its time complexity is O(n), where _n_ is the number of nodes in the tree. This is a significant improvement over the O(n³) time complexity of the Tree Edit Distance (TED) algorithm, achieved by sacrificing optimality for performance.
+
+This algorithm is based on 2 assumptions, which reduces the time complexity from O(n³) to O(n):
+
+1. **Two elements of different types will produce different trees.** If two trees have elements of different types at the same position, React tears down the old tree and builds the new one from scratch. Rather than spending time trying to identify the exact differences between the trees, React assumes that all nodes are different and replaces the old tree entirely to save time.
+2. **The developer can hint at which child elements may be stable across different renders with a `key` prop.** Developers can use the `key` prop to hint to React which child elements should be considered stable across different renders.
