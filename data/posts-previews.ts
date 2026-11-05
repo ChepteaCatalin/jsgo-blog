@@ -8,8 +8,8 @@ import nerdCover from "@/public/covers/nerd.jpg";
 
 export const postsPreviews: PostPreview[] = [
   {
-    title: `React: Getting Started (Part 1)`,
-    slug: "react-getting-started-part-1",
+    title: `React: Getting Started`,
+    slug: "react-getting-started",
     date: "2026-11-01",
     coverImage: smallElephantCover,
     summary: "Getting started with React and understanding its core concepts.",
