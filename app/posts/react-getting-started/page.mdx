@@ -134,3 +134,109 @@ This algorithm is based on 2 assumptions, which reduces the time complexity from
 
 1. **Two elements of different types will produce different trees.** If two trees have elements of different types at the same position, React tears down the old tree and builds the new one from scratch. Rather than spending time trying to identify the exact differences between the trees, React assumes that all nodes are different and replaces the old tree entirely to save time.
 2. **The developer can hint at which child elements may be stable across different renders with a `key` prop.** Developers can use the `key` prop to hint to React which child elements should be considered stable across different renders.
+
+### The Diffing Algorithm
+
+When diffing two trees, React first compares the two root elements. The behavior is different depending on the types of the root elements.
+
+#### Elements Of Different Types
+
+Whenever the root elements have different types, React will tear down the old tree and build the new tree from scratch.
+
+When tearing down a tree, components are unmounted and old DOM nodes are destroyed. When building up a new tree, new DOM nodes are inserted into the DOM and component instances are mounted. Any state associated with the old tree is lost. That's because of the assumption (1) from above.
+
+In this example, during reconciliation, the existing `Counter` component will be unmounted, and a new `Counter` component will be mounted, causing its state to be reset.
+
+```jsx
+<div>
+  <Counter />
+</div>
+
+<span>
+  <Counter />
+</span>
+```
+
+#### DOM Elements Of The Same Type
+
+When comparing two React DOM elements of the same type, React looks at the attributes of both, keeps the same underlying DOM node, and only updates the changed attributes. For example:
+
+```jsx
+<div className="before" title="stuff" />
+
+<div className="after" title="stuff" />
+```
+
+By comparing these two elements, React knows to only modify the `className` on the underlying DOM node.
+
+When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element. No deleting, no unmounting and no state reset occurs.
+
+After handling the DOM node, React then recurses on the children.
+
+#### Recursing On Children
+
+By default, when recursing on the children of a DOM node, React just iterates over both lists of children at the same time and generates a mutation whenever there’s a difference:
+
+```jsx
+<ul>
+  <li>first</li>
+  <li>second</li>
+</ul>
+
+<ul>
+  <li>first</li>
+  <li>second</li>
+  <li>third</li>
+</ul>
+```
+
+React will match the two `<li>first</li>` trees, match the two `<li>second</li>` trees, and then insert the `<li>third</li>` tree.
+
+If you implement it naively, inserting an element at the beginning has worse performance. For example, converting between these two trees works poorly:
+
+```jsx
+<ul>
+  <li>Duke</li>
+  <li>Villanova</li>
+</ul>
+
+<ul>
+  <li>Connecticut</li>
+  <li>Duke</li>
+  <li>Villanova</li>
+</ul>
+```
+
+React will mutate every child instead of realizing it can keep the `<li>Duke</li>` and `<li>Villanova</li>` subtrees intact. This inefficiency can be a problem.
+
+#### Keys
+
+In order to solve this issue, React supports a `key` attribute. When children have keys, React uses the key to match children in the original tree with children in the subsequent tree. For example, adding a key to our inefficient example above can make the tree conversion efficient:
+
+```jsx
+<ul>
+  <li key="2015">Duke</li>
+  <li key="2016">Villanova</li>
+</ul>
+
+<ul>
+  <li key="2014">Connecticut</li>
+  <li key="2015">Duke</li>
+  <li key="2016">Villanova</li>
+</ul>
+```
+
+Now React knows that the element with key '2014' is the new one, and the elements with the keys '2015' and '2016' have just moved. So, this is the explanation of the (2) assumption from above.
+
+Finding a key is usually simple, as most of the cases you have an ID from your backend. When this is not possible, you can hash some part of the element content to generate unique key. **Keys have to be unique between siblings, not globally unique**.
+
+As a last resort, you can pass an item’s index in the array as a key. This can work well if the items are never reordered, but reorders will be slow.
+
+One side note: **rerendering** means calling a component's `render()` function again, while **unmounting** means completely removing the component from the DOM and discarding its state.
+
+#### Downsides
+
+From the 2 heuristic assumptions mentioned above, results 2 downsides:
+
+1. The algorithm will not try to match subtrees of different component types. If you see yourself alternating between two component types with very similar output, you may want to make it the same type. In practice, we haven’t found this to be an issue.
+2. Keys should be stable, predictable, and unique. Unstable keys (like those produced by `Math.random()`) will cause many component instances and DOM nodes to be unnecessarily recreated, which can cause performance degradation and lost state in child components.
