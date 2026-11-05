@@ -103,3 +103,15 @@ There are plenty of them:
 - `react-native-renderer` is a thin layer that teaches React to interact with React Native, but, React Native itself renders React components to native views (IOS, Android, Desktop etc.).
 - `react-test-renderer` renders React components to JSON trees for Snapshot Testing in Jest and maybe other testing tools too.
 - `react-art` renders React components to the ART library, which is used for drawing vector graphics in React.
+
+## Reconcilers
+
+Even vastly different renderers like React DOM and React Native need to share a lot of logic. In particular, the [reconciliation](https://legacy.reactjs.org/docs/reconciliation.html) algorithm should be as similar as possible so that declarative rendering, custom components, state, lifecycle methods, and refs work consistently across platforms.
+
+The reconciler is the part of React that implements the reconciliation algorithm. It is shared between React DOM and React Native.
+
+In React 15 and earlier, React used the _Stack Reconciler_. Starting with React 16, it introduced the _Fiber Reconciler_, so it's code is located at `packages/react-reconciler`.
+
+## Event System
+
+React implements a layer over native events to smooth out cross-browser differences. Its source code is located in `packages/react-dom/src/events`.
