@@ -66,7 +66,7 @@ React also integrates well with a wide range of third-party libraries, making it
 
 ## Scheduling
 
-Even though React components are defined as functions that you write and own, you don't call them yourself. React is responsible for invoking them. In other words, control over execution belongs to React. This is an example of **Inversion of Control (IoC)**: you define the components and hand them over to React, which decides when to execute them and how to update the UI.
+Even though React components are defined as functions that you write and own, you don't call them yourself. Your component simply describes what needs to be rendered, but doesn't specify when it should be rendered. React is responsible for invoking them. In other words, control over execution belongs to React. This is an example of **Inversion of Control (IoC)**: you define the components and hand them over to React, which decides when to execute them and how to update the UI.
 
 Unlike some other libraries and frameworks, React is not inherently reactive in the traditional sense. Despite its name, React doesn't automatically react to arbitrary data changes. Perhaps it should have been called _Schedule_ instead! When you call `setState`, React doesn't immediately update the state and execute your component. Instead, it schedules an update to be processed later.
 
