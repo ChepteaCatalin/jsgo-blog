@@ -1,0 +1,96 @@
+import PostImage from "@/components/PostImage";
+import Cover from "@/public/covers/aristotle.jpg";
+
+export const metadata = {
+  title: "React: Design Principles",
+  description: "Getting into React's philosophy",
+};
+
+# React: Design Principles
+
+<PostImage src={Cover} title="React: Design Principles" />
+
+7 Nov 2026
+
+React has a strong philosophy centered around simplicity, composability, and declarative programming. Understanding these principles can help developers build more maintainable and efficient React applications.
+
+## Composition
+
+**The most important feature of React is composition.** React was designed to allow developers to create components independently and compose them together without worrying about implementation details or compatibility issues.
+
+A component is more than just a function: it is a unit that encapsulates rendering, state, and lifecycle behavior in a composable manner.
+
+Overall, React embraces functional programming principles. You declaratively define components and compose them together to build applications that satisfy your requirements.
+
+## Common Abstraction
+
+React aims to stay at a relatively low level of abstraction. The React team generally avoids implementing features in React itself when the same functionality can be implemented in userland. They are cautious about introducing unnecessary abstractions because they don't want to bloat the library with features that applications might never need. This is a different approach from frameworks like Angular, which provide a broader set of built-in features.
+
+There are some exceptions to this principle. When a particular pattern or functionality is widely implemented by developers, the React team may decide to incorporate it into React itself. This is because developers may come up with inconsistent or poorly designed abstractions. Rather than leaving everyone to reinvent the wheel, potentially introducing their own flawed abstractions, the React team can provide a well-designed, standardized solution that benefits from React's underlying architecture.
+
+Good examples of this approach are state management, lifecycle methods, and cross-browser event normalization through Synthetic Events.
+
+Proposals for significant new abstractions are tracked under the ["Big Picture"](https://github.com/facebook/react/issues?q=is%3Aopen+is%3Aissue+label%3A%22Type%3A+Big+Picture%22) label in the React repository's issue tracker.
+
+## Escape Hatches
+
+React is pragmatic. Its development is guided by the needs of Meta, Vercel, and other [founding members of the React Foundation](https://react.dev/blog/2026/02/24/the-react-foundation#founding-members).
+
+React is also pragmatic in the way it leverages sophisticated, sometimes non-mainstream ideas, such as functional programming, while making them accessible to developers with different levels of experience.
+
+When the React team wants to deprecate an API, they generally try to educate the community about the alternatives before removing it. This contrasts with frameworks like Angular, where major releases have historically introduced breaking changes that sometimes require substantial migrations.
+
+When React cannot provide a declarative way to accomplish something, it offers imperative escape hatches instead.
+
+When the team wants to introduce a new feature but is not yet confident about its API design, they often discuss it with the community, collect feedback, and introduce experimental APIs before eventually releasing a stable version.
+
+## Stability
+
+The React team values stability and understands that React is widely used. Therefore, they are generally reluctant to make changes to its public APIs. They recognize that some changes are necessary to prevent stagnation, but when breaking changes are unavoidable, they try to provide clear migration guides and, preferably, automated codemods to help developers adapt.
+
+Before introducing significant changes, the team often tests new APIs and migration strategies in Meta's internal codebases. If they discover that the migration is too disruptive or introduces too much friction, they may reconsider the proposal or delay its adoption. If the migration proves successful, they don't simply assume that everyone else will have the same experience. They also engage with the broader community to gather feedback, identify potential problems, and find opportunities for improvement.
+
+When deprecating or removing functionality, they try to do so carefully, following a predictable release process and avoiding unnecessary disruption to the millions of developers and users who depend on React. Breaking changes are generally reserved for major releases.
+
+The React team demonstrates considerable maturity and responsibility when it comes to changing public APIs. They approach these changes in a coordinated and transparent manner, aiming to minimize their impact on the community.
+
+They also understand that the need to change an API can arise for several reasons: the ecosystem evolves, new requirements emerge, and sometimes the original API design turns out not to have been ideal. In other words, API evolution is not necessarily an admission of failure; it is a natural part of maintaining a widely used library over time.
+
+This is quite different from the Angular team's approach. From my perspective, the Angular team seems much less considerate of the community when it comes to public API stability. They frequently change their direction, introducing breaking changes and redesigning public APIs in ways that, in my opinion, don't always make them better. This creates unnecessary migration work and makes it harder for developers to rely on the framework's APIs over the long term.
+
+## Interoperability
+
+React was designed to coexist with other libraries, frameworks, and approaches within the same application. This allows developers to adopt React incrementally, without having to undertake large-scale migrations just to start using it.
+
+React also integrates well with a wide range of third-party libraries, making it highly interoperable with the broader JavaScript ecosystem.
+
+## Scheduling
+
+Even though React components are defined as functions that you write and own, you don't call them yourself. React is responsible for invoking them. In other words, control over execution belongs to React. This is an example of **Inversion of Control (IoC)**: you define the components and hand them over to React, which decides when to execute them and how to update the UI.
+
+Unlike some other libraries and frameworks, React is not inherently reactive in the traditional sense. Despite its name, React doesn't automatically react to arbitrary data changes. Perhaps it should have been called _Schedule_ instead! When you call `setState`, React doesn't immediately update the state and execute your component. Instead, it schedules an update to be processed later.
+
+This is a fundamental aspect of React's architecture. From the beginning, the React team intentionally retained control over when components are executed. This allows React to evolve its rendering and scheduling strategies without requiring developers to change how they write their components. If developers controlled component execution themselves, introducing new scheduling strategies could require significant changes to application code and potentially lead to less efficient applications.
+
+By retaining control over execution, React can:
+
+- Schedule state updates.
+- Batch multiple updates into a single render.
+- Interrupt rendering work when necessary.
+- Split rendering work into smaller chunks.
+- Prioritize some updates over others.
+- Defer less important work.
+
+All of this allows React to optimize rendering without requiring developers to manage the actual execution order themselves.
+
+**React is declarative, but not reactive in the traditional sense.** You declaratively define components and describe what the UI should look like, but you don't control when those components execute. React owns that responsibility.
+
+That's why React has the ["React calls Components and Hooks"](https://react.dev/reference/rules#react-calls-components-and-hooks) rule in its Rules of React.
+
+This rule was frequently violated by developers even before AI-generated code became widespread. Developers would call component functions directly without realizing that they were breaking one of React's fundamental rules. In my current project, we have plenty of examples of this.
+
+That's why thinking of a React component as simply a function is a misleading mental model. It might lead you to believe that, since a component is a function, you're free to call it whenever you want.
+
+I'd rather think of a React component as a **special function owned by React**. You define it, but React controls when and how it gets executed. You don't own its execution, and you shouldn't invoke it yourself.
+
+The React team intentionally retained control over component execution because developers could otherwise misuse it. This was a deliberate architectural decision from the very beginning: React owns the execution of components so that it can manage rendering, scheduling, and performance without relying on developers to get everything right.

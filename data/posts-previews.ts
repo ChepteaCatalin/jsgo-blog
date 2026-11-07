@@ -5,8 +5,16 @@ import pureFunctionCover from "@/public/covers/pure-function.jpg";
 import howAmILearningReactCover from "@/public/covers/how-am-i-learning-react.jpeg";
 import smallElephantCover from "@/public/covers/small-elephant.jpg";
 import nerdCover from "@/public/covers/nerd.jpg";
+import aristotle from "@/public/covers/aristotle.jpg";
 
 export const postsPreviews: PostPreview[] = [
+  {
+    title: `React: Design Principles`,
+    slug: "react-design-principles",
+    date: "2026-11-07",
+    coverImage: aristotle,
+    summary: "Getting into React's philosophy",
+  },
   {
     title: `React: Getting Started`,
     slug: "react-getting-started",
