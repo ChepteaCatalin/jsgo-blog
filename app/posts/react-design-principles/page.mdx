@@ -94,3 +94,64 @@ That's why thinking of a React component as simply a function is a misleading me
 I'd rather think of a React component as a **special function owned by React**. You define it, but React controls when and how it gets executed. You don't own its execution, and you shouldn't invoke it yourself.
 
 The React team intentionally retained control over component execution because developers could otherwise misuse it. This was a deliberate architectural decision from the very beginning: React owns the execution of components so that it can manage rendering, scheduling, and performance without relying on developers to get everything right.
+
+## Developer Experience
+
+The React team values developer experience, which is why they created excellent documentation, developed React DevTools, and provided plenty of useful warnings in development mode.
+
+## Debugging
+
+**Don't be shy about using React DevTools.** I only recently realized that, for all those years, instead of leveraging React DevTools, I was debugging by guessing and sprinkling `console.log` calls everywhere.
+
+With React DevTools, debugging becomes a boring but finite process. Without it, you can end up going through a seemingly endless series of guesses.
+
+**So, please start using React DevTools when debugging.** It provides a wealth of useful information about your components, including their state, props, and much more.
+
+You can also inspect a component's source code directly in DevTools, which means you can set breakpoints or examine the code without having to guess where the issue might be.
+
+So, before debugging, follow these steps:
+
+1. Identify the component that is most likely causing the issue.
+2. Find it in React DevTools.
+3. Inspect its props. If they're incorrect, move up the component tree and identify the parent that introduced the incorrect props.
+4. If the props are fine, inspect the component's render function.
+5. If the render function looks fine, investigate the `setState` calls.
+
+Remember, you can set breakpoints directly in your source code from DevTools.
+
+I think I'll challenge myself to use React DevTools without a single `console.log` for at least a week and see how it affects my debugging workflow. That's a challenge for me!
+
+## Configuration
+
+The React team doesn't provide a runtime configuration API because it doesn't work well with composition. They also haven't figured out how to implement it properly, as there are still some open questions:
+
+1. What if somebody calls such a configuration function from a third-party component library?
+2. What if one React app embeds another React app, and their desired configurations are incompatible?
+3. How can a third-party component specify that it requires a particular configuration?
+
+## Beyond the DOM
+
+React is renderer-agnostic, which means it can be used across multiple platforms. Originally, it was created for the browser, but React Native has become quite important as well. So, essentially, React can run almost everywhere.
+
+By making React renderer-agnostic, the React team introduced some additional complexity into its implementation. On the other hand, this architecture allows them to ship improvements across all platforms using the same core code and provide a single mental model for working with components across different platforms. This allows developers to focus on building products rather than worrying about the underlying platform.
+
+## Implementation
+
+The React team prioritizes an elegant API for consumers. When it comes to their internal implementation, they focus on performance, correctness, and providing a good user experience. Code elegance is secondary.
+
+They prefer straightforward, boring code over prematurely cleaned-up or over-abstracted solutions. They introduce new abstractions only when they're actually necessary.
+
+## Optimized for Tooling
+
+React intentionally uses verbose names like `dangerouslySetInnerHTML`. This is done for several reasons:
+
+1. To make interaction points with the library explicit and easy to identify, both for developers and third-party tools (such as lint plugins, code analyzers, and codemods).
+2. To make potentially dangerous operations more obvious during code reviews.
+
+Basically, interaction points with the library should be explicit and unambiguous, making them easy to identify for both developers and tooling.
+
+## Dogfooding
+
+Developers at Facebook eat their own dog food, as they heavily use React internally. However, they also listen to the community and try to build something useful for everyone.
+
+They believe that if something works well at Facebook, it's probably good enough for a wider audience too. Rather than trying to satisfy everyone with everything, they focus on meeting the needs of a smaller group of users and expect that the rest of the community will benefit from those decisions as well.
